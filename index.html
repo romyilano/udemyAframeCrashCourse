@@ -15,7 +15,10 @@
                 <img id="clear-sunny-sky" src="images/clear-sunny-sky.jpg">
                 <img id="360-panorama" src="images/clear-sunny-sky.jpg">
                 <img id="onsen-panorama-ai" src="https://cdn.glitch.me/a85879ed-22e8-4259-8ab7-f1d16639d494/cityOnsenAI.png?v=1722287328452">
-            </a-assets> 
+            
+                <a-asset-item id="berkeleyArt-scan" 
+                              src="https://cdn.glitch.global/a85879ed-22e8-4259-8ab7-f1d16639d494/7_24_2024.glb?v=1722287821644"> </a-asset-item>
+          </a-assets> 
             
             <!-- Sky 
             <a-sky src="#clear-sunny-sky"
@@ -29,8 +32,13 @@
                                normal-map: #floor-NRM;
                                normal-texture-repeat: 5000 5000"
                      rotation="-90 0 0"
-                     scale="10000 10000 1">
+                     scale="10000 10000 1"
+                     position="0 -80 0">
+              <!-- -80 seems as low as it'll go -->
             </a-plane> 
+          
+          <!-- GLB Model -->
+          <a-entity gltf-model="#berkeleyArt-scan" position="0 0 -5" scale="1 1 1"></a-entity>
             
             <!-- Ground | Cartoonish Style
             <a-plane material="color: #00AA00;
