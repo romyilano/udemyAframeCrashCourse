@@ -52,6 +52,35 @@
             <a-sky src="#360-panorama"></a-sky> -->
           
           <a-sky src="#onsen-panorama-ai"></a-sky>
+          
+             <!-- Typewriter Text -->
+            <a-entity id="typewriter-text" text="value: ; color: white; width: 6;" position="0 2 -4"></a-entity>
+    
         </a-scene>
+              <script>
+            // Typewriter text
+            const textEntity = document.querySelector('#typewriter-text');
+            const fullText = "Snow Country\na novel by master writer\nYasunari Kawabata";
+            let currentIndex = 0;
+
+            function typeWriter() {
+                if (currentIndex < fullText.length) {
+                    textEntity.setAttribute('text', 'value', fullText.substring(0, currentIndex + 1));
+                    currentIndex++;
+                    setTimeout(typeWriter, 100); // Adjust typing speed here
+                } else {
+          
+                  // Text is fully typed, wait for 3 seconds and then reset
+              setTimeout(() => {
+                  currentIndex = 0;
+                  textEntity.setAttribute('text', 'value', '');
+                  typeWriter(); // Start typing again
+              }, 3000);
+                }
+            }
+
+            // Start the typewriter effect
+            typeWriter();
+        </script>
     </body>
 </html>
