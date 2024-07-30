@@ -4,7 +4,24 @@
     <title>Snow Country</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   </head>
-
+  <style>
+    #book-spine {
+        width: 512px;
+        height: 512px;
+        background-color: #ADD8E6; /* Light Blue */
+        position: relative;
+    }
+    #book-spine::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent);
+        background-size: 50px 50px;
+    }
+</style>
   <body>
     <!-- ******** NOTHING HAS CHANGED WITH v1.4.2 ******** -->
     <a-scene>
