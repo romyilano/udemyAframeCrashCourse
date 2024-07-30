@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <title>L22 - Controller-based interactions for VR HEADSETS</title>
+        <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+        <!-- ******** NEW EVENT-SET COMPONENT VERSION FOR A-FRAME v1.4.2 ******** -->
+        <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+        <!-- ******** WE ARE NOT USING THE DEPRECATED progressive-controls COMPONENT ******** -->
+        <!-- ******** INSTEAD WE ARE USING THE A-FRAME'S laser-controls COMPONENT (SEE BELOW) ******** -->
+    </head>
+      <body>
+        <!-- ******** For the code related to the event-set component, NOTHING HAS CHANGED WITH v1.4.2 ******** -->
+        <a-scene background="color: #FFFFFF">
+            
+            <!-- CAMERA RIG -->
+            <a-entity id="cam-rig">
+                <!-- CAMERA -->
+                <a-entity camera position="0 1.6 0" look-controls></a-entity>
+                <!-- A-FRAME's laser-controls component for VR headsets (Quest, Quest 2, Vive Pro, etc.) -->
+                <!-- Right Controller  -->
+                <a-entity laser-controls="hand: right" raycaster="objects: .UIbutton; lineColor: #FF0000"></a-entity>
+                <!-- Left Controller  -->
+                <a-entity laser-controls="hand: left" raycaster="objects: .UIbutton; lineColor: #FF0000"></a-entity>
+            </a-entity>
+            
+            <!-- Screen -->
+            <a-box id="screen" color="#212121" position="0 2.75 -9" scale="8 4 0.1" class="UIbutton"
+                   event-set__rescol="_event: click; color: #212121">
+            </a-box>
+            
+            <!-- Left Button -->
+            <a-box color="#212121" position="-2.25 0 -9" scale="2 1 0.1" class="UIbutton"
+                   event-set__enter="_event: mouseenter; color: #AA0000"
+                   event-set__leave="_event: mouseleave; color: #212121"
+                   event-set__tarcol="_event: click; _target: #screen; color: #AA0000">
+            </a-box>
+            <!-- Center Button -->
+            <a-box color="#212121" position="0 0 -9" scale="2 1 0.1" class="UIbutton"
+                   event-set__enter="_event: mouseenter; color: #FFAA00"
+                   event-set__leave="_event: mouseleave; color: #212121"
+                   event-set__tarcol="_event: click; _target: #screen; color: #FFAA00">
+            </a-box>
+            <!-- Right Button -->
+            <a-box color="#212121" position="2.25 0 -9" scale="2 1 0.1" class="UIbutton"
+                   event-set__enter="_event: mouseenter; color: #00AAFF"
+                   event-set__leave="_event: mouseleave; color: #212121"
+                   event-set__tarcol="_event: click; _target: #screen; color: #00AAFF">
+            </a-box>
+            
+        </a-scene>
+    </body>
+</html>

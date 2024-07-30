@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <title>Free teleport locomotion</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <!-- ******** NEW blink-controls COMPONENT FOR TELEPORTATION IN A-FRAME v1.4.2 ******** -->
+    <!-- More info at this link: https://github.com/jure/aframe-blink-controls -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls/dist/aframe-blink-controls.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <!-- ******** Unfortunately, the lack of a stable and documented build of the Recast library for WASM
+                  has become a show-stopper, and the creator Don McCurdy can no longer maintain this project.
+                  If a new build of Recast becomes available on NPM, supporting Node.js v14+, and is actively maintained,
+                  he may be able to revive this. Until then, I cannot work on the project further.
+                  Further info at this link: https://github.com/donmccurdy/aframe-inspector-plugin-recast/issues/48
+                  
+                  THIS MEANS THAT NAVIGATION MESHES STILL WORK IN A-FRAME!
+                  YOU WILL JUST NEED TO CREATE THEM IN BLENDER (RATHER THEN USING THE A-FRAME INSPECTOR)
+                  AND THEN IMPORT THEM AS AN ASSET, JUST LIKE I DID IN THIS EXAMPLE.
+      ******** -->
+      <!-- ******** HERE WE ARE ALSO USING THE A-FRAME'S laser-controls COMPONENT (SEE BELOW) ******** -->
+</head>
+
+<body>
+    <!-- ******** SOME THINGS HAVE CHANGED WITH v1.4.2 ******** -->
+    <a-scene background="color: FFFFFF" inspector-plugin-recast>
+		<!-- Asset Management System -->
+		<a-assets>
+			<a-asset-item id="navmesh" src="L42-ASSETs/navmesh.gltf"></a-asset-item>
+			<a-asset-item id="my-navmesh" src="L42-ASSETs/my-navmesh.gltf"></a-asset-item>
+		</a-assets>
+		
+		<!-- camera rig -->
+    <a-entity id="player" position="0 0 6">
+      <!-- camera -->
+      <a-entity id="camera" camera wasd-controls look-controls position="0 1.6 0">
+      </a-entity>
+      <!-- hand controls -->
+      <!-- A-FRAME's laser-controls component for VR headsets (Quest, Quest 2, Vive Pro, etc.) -->
+      <!-- New blink-controls component for teleportation -->
+      <!-- More info at this link: https://github.com/jure/aframe-blink-controls -->
+      <!-- Right Controller  -->
+      <a-entity laser-controls="hand: right" raycaster="objects: .clickable; lineColor: #FF0000"
+                blink-controls="collisionEntities: #ground">
+      </a-entity>
+      <!-- New blink-controls component for teleportation -->
+      <!-- More info at this link: https://github.com/jure/aframe-blink-controls -->
+      <!-- Left Controller  -->
+      <a-entity laser-controls="hand: left" raycaster="objects: .clickable; lineColor: #FF0000"
+                blink-controls="collisionEntities: #ground">
+      </a-entity>
+    </a-entity>
+
+		<!-- Ground -->
+		<a-plane color="#DDDDDD" shader="flat" rotation="-90 0 0" scale="8 16 1">
+		</a-plane>
+		<!-- NavMesh -->
+		<a-entity id="ground" gltf-model="#my-navmesh" position="0 0.001 0" visible="false">
+		</a-entity>
+		
+		<!-- Placeholders -->
+    <a-cylinder color="#FFAA00" radius="0.5" position="0 0.5 0"></a-cylinder>
+    <a-cylinder color="#0077FF" radius="2" position="0 0.5 -4.5"></a-cylinder>
+    </a-scene>
+</body>
+</html>
