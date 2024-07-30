@@ -2,22 +2,17 @@
 <html>
     <head>
         <title>L14 - Loading and displaying 3D models</title>
-        <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+        <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     </head>
     <body>
-        <!-- ******** SOME THINGS HAVE CHANGED WITH v1.4.2 ******** -->
-        <!-- To correct the texture color in 3D models, you want to attach the renderer component
-             to the <a-scene> element and then set the colorManagement property to true (line 13).
-             More details about the Linear and sRGB color space issue here:
-             https://github.com/aframevr/aframe/issues/3509 -->
-        <a-scene renderer="colorManagement: true">
+        <a-scene>
             <!-- Asset Management System -->
-            <!-- **** IMPORTANT **** Due to the website policies, I cannot distribute the 3D models
+            <!-- IMPORTANT: Due to the website policies, I cannot distribute the 3D models
                  that I use in the video. Please download the 3D models yourself, or use your own,
                  and then move them to the ASSETs folder -->
             <a-assets>
                 <img id="sky" src="L14-ASSETs/clear-sunny-sky.jpg">
-                <a-asset-item id="your-3Dmodel-01" src="L14-ASSETs/scene.gltf"></a-asset-item>
+                <a-asset-item id="your-3Dmodel-01" src="L14-ASSETs/your-3Dmodel-01.gltf"></a-asset-item>
                 <a-asset-item id="your-3Dmodel-02-o" src="L14-ASSETs/your-3Dmodel-02.obj"></a-asset-item>
                 <a-asset-item id="your-3Dmodel-02-m" src="L14-ASSETs/your-3Dmodel-02.mtl"></a-asset-item>
             </a-assets>
