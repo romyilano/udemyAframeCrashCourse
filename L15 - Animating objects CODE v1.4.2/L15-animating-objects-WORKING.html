@@ -20,8 +20,9 @@
         <a-entity position="0 0 8">
             <a-camera></a-camera>
            
-            <!-- Rotating Box -->
+           
         </a-entity>
+         <!-- Rotating Box -->
         <a-box color="#AA0000" position="0 4 0">
             <a-animation attribute="rotation"
             repeat="indefinite"
@@ -31,12 +32,24 @@
              </a-animation>
         </a-box>
 
+                 <!-- Moving Box -->
+                 <a-box color="#FFAA00" position="0 0.5 0">
+                    <a-animation attribute="position"
+                    repeat="indefinite"
+                    dur="5000"
+                    easing="linear"
+                    to="0 0 0">
+                     </a-animation>
+                </a-box>
+        
+
+        <!-- orbiting and revolving box -->
         <a-entity position="0 0.5 0">
             <a-animation attribute="rotation"
             repeat="indefinite"
             dur="5000"
             easing="linear"
-            to="0 360 0">
+            to="0 -360 0">
              </a-animation>
             <a-box color="#00AA00"
             position="2 0 0">
